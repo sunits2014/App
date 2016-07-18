@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Web App</title>
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styleshit.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script src="touch_punch.js" type="text/javascript"></script>
+		<!--Calculate function-->
+        <script type="text/javascript">
+            function calculate(){
+                var x = Number(document.getElementById("num1").value);
+                var y = Number(document.getElementById("num2").value);
+				
+				var num1 = x.valueOf();
+				var num2 = y.valueOf();
+                
+                var adding = num1 + num2;
+				var subtracting = num1 - num2;
+				var multiplying = num1 * num2;
+				var dividing = num1 / num2;
+				
+				var a = document.getElementById('addThem').checked;
+				var s = document.getElementById('subThem').checked;
+				var m = document.getElementById('mulThem').checked;
+				var d = document.getElementById('divThem').checked;
+				
+				if ((num1 == "") || (num2 == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please provide two non-zero numbers!!";
+				}
+					else if((a == "") && (s == "") && (m == "") && (d == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please select an operation.";
+				}
+					
+				if(document.getElementById('addThem').checked && (num1 == "") || (num2 == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please provide two non-zero numbers!!";
+				}		
+				    else if(document.getElementById('addThem').checked){
+				    document.getElementById("result1").value = adding; 
+					document.getElementById('errorMsg1').innerHTML = "";
+				};					 
+				
+				if(document.getElementById('subThem').checked && (num1 == "") || (num2 == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please provide two non-zero numbers!!";
+				}
+				    else if(document.getElementById('subThem').checked){
+				    document.getElementById("result1").value = subtracting;
+					document.getElementById('errorMsg1').innerHTML = "";
+				};
+				
+				if(document.getElementById('mulThem').checked && (num1 == "") || (num2 == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please provide two non-zero numbers!!";
+				}
+				    else if(document.getElementById('mulThem').checked){
+				    document.getElementById("result1").value = multiplying;
+					document.getElementById('errorMsg1').innerHTML = "";
+				};
+				
+				if(document.getElementById('divThem').checked && (num1 == "") || (num2 == "")){
+					document.getElementById('errorMsg1').innerHTML = "Please provide two non-zero numbers!!";
+				}
+				    else if(document.getElementById('divThem').checked){
+				    document.getElementById("result1").value = dividing;
+					document.getElementById('errorMsg1').innerHTML = "";
+				};
+                 
+			}; 
+		</script>
+		<!--Calculation function ends-->
+		<!--Array Calling function-->
+        <script type="text/javascript">
+			$(document).ready(function call(){
+			    var myArray = ["Suresh Sinha 68" , "Purnima Sinha 56" , "Sunit Sinha 30"];
+				var myArrayLength = myArray.length;
+                
+                $('#call').click(function(){
+                document.getElementById("arrayDisplay").innerHTML = myArray; 
+                });
+			   	
+			});
+        </script>
+		<!--Array Calling function ends-->
+		<!--Draggable function-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.dragArray').draggable({
+                    cursor:"move",
+                    revert: true,
+                });
+                
+                $('.dropBox').droppable({
+                    accept:'#drag_yes',
+                    drop:function(event,ui){
+                        $('#dropArray').append(ui.draggable);
+                    },
+                });
+               
+            });        
+        </script>
+        <!--Draggable function ends-->
+		<!--Cards Animation--> 
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#c_btn1").click(function(){
+					$("#sd5").css('left','78.5%');
+					$("#sd4").css('left','59.8%');
+					$("#sd3").css('left','41%');
+					$("#sd2").css('left','22.3%');
+				});
+			});
+			$(document).ready(function(){
+				$("#c_btn2").click(function(){
+					$("#sd5").css('left','13.75em');
+					$("#sd4").css('left','10.75em');
+					$("#sd3").css('left','7.75em');
+					$("#sd2").css('left','5em');
+				});
+			});
+		</script>
+		<!--Cards Animation ends-->
+		<!--Basic jQuery-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $(".buttun_menu").click(function(){
+                  $("#slide").toggleClass('slide-in'); 
+               }); 
+            });        
+        </script>
+		<!--Basic jQuery ends-->
+        <!--Contact Modal-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $("#cont").click(function(){
+                  $(".modal_container").fadeIn('2000');
+                  $(".menu_body_cform").slideDown('5000'); 
+                  $(".menu_body").addClass('blurit');  
+               }); 
+               
+               $("#close").click(function(){ 
+                  $(".menu_body_cform").slideUp('2000');                
+                  $(".modal_container").fadeOut('2200');
+                  $(".menu_body").delay('5000').removeClass('blurit');                  
+               });     
+            });
+        </script>
+        <!--Modal ends-->
+        <!--Parralax Starts-->
+        <script type="text/javascript">
+            function parallax(){
+              
+                var plx = document.getElementById('p_bg');
+                plx.style.top = -(window.pageYOffset / 5) + 'px';
+            }
+                window.addEventListener("scroll", parallax, false);
+        </script>
+        <!--Parallax ends-->
+        <!--Sticky Header Starts-->
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var menuOffset = jQuery(".item_menu").offset().top;
+            
+            jQuery(window).scroll(function(){
+                var scrollPos = jQuery(window).scrollTop();
+                
+                if (scrollPos >= menuOffset){
+                    jQuery(".item_menu").css('width','100%');
+                    jQuery(".item_menu").addClass('fixed');
+                }
+                else {
+                    jQuery(".item_menu").removeClass('fixed');
+                    jQuery(".item_menu").css('width','1100');
+                }
+            })
+        });
+        </script>   
+        <!--Sticky Header Ends-->
+    </head>
+    <body>
+    	<p class="hidden_para">Best viewed on a desktop/laptop screen.<br> Please switch to one.</p>
+        <div class="main_container">
+        <div class="addition_fullwidth">
+                <div class="addition_menu">
+                    <div class="menu_body1">
+                        <div id="p_bg">
+                        <h3 class="t_head">A Simple Parallax Effect</h3>                        
+                        <p class="p_p">With new technologies like HTML5 and CSS3, it's becoming possible to create more advanced, interesting and remarkable effects in the browser. While these effects can be gimmicky, when employed in the right way they can result in a remarkable and memorable website.<br><br>
+                        One big web design trend of the moment is parallax scrolling, which involves the background moving at a slower rate to the foreground, creating a 3D effect as you scroll down the page. It can sometimes be overwhelming, but when used sparingly it can provide a nice, subtle element of depth.<br><br>
+                            Web designers began incorporating parallax scrolling in 2011, using HTML5 and CSS3. Advocates argue it is a simple way to embrace the fluidity of the Web. Proponents use parallax backgrounds as a tool to better engage users and improve the overall experience that a website provides. However, a Purdue University study, published in 2013, revealed the following findings: "... although parallax scrolling enhanced certain aspects of the user experience, it did not necessarily improve the overall user experience".</p>
+                            <p class="warn">To see the effect in a more effective way, please switch to Mozilla Firefox coz that is one browser that respects smooth UI.</p>
+                            <p class="p_p">Scroll down to see the effect<br><i class="fa fa-angle-double-down fa-3x"></i></p>
+                        </div> 
+                    </div>                    
+                </div>
+            </div>
+            <div class="item_menu">
+                <ul class="menu_items">
+                    <li><a href="#">Froyo</a></li>
+                    <li><a href="#">Ginger Bread</a></li>
+                    <li><a href="#">Ice Cream Sandwich</a></li>
+                    <li><a href="#">Jelly Bean</a></li>
+                    <li><a href="#">Kit-Kat</a></li>
+                    <li><a href="#">Marshmellow</a></li>
+                </ul>            
+            </div>
+        <div class="container">
+            <div class="addition">                
+                    <h3 class="head">Calculation example:</h3>
+						<ul class="add">
+                            <form method="post" action="">
+                                <li><input type="text" id="num1" class="num" placeholder="Please enter 1st number..." onfocus="this.placeholder=''" onblur="this.placeholder='Please enter 1st number...'" autocomplete="off"></li>
+                                <li><input type="text" id="num2" class="num" placeholder="Please enter 2nd number..." onfocus="this.placeholder=''" onblur="this.placeholder='Please enter 2nd number...'" autocomplete="off"></li>
+                                <li><button type="reset" name="reset" class="plus2">Clear</button></li>
+                                <li><input type="radio" id="addThem" name="option" autocomplete="off">Add</li>
+                                <li><input type="radio" id="subThem" name="option" autocomplete="off">Subtract</li>
+                                <li><input type="radio" id="mulThem" name="option" autocomplete="off">Multiply</li>
+                                <li><input type="radio" id="divThem" name="option" autocomplete="off">Divide</li><br>
+                                <li><p id="errorMsg1"></p></li><br>
+                                <li><button type="button" name="sum" id="sum" class="plus2" onclick="calculate()">Calculate</button>                                 </li>
+                                <li><input type="text" id="result1" class="num" disabled autocomplete="off"></li>
+                                <li><small><sup>*</sup>NaN stands for 'Not a Number'</small></li>
+                                    
+                            </form>    
+						</ul>							
+            </div>
+            <hr class="row">
+            <div class="addition_drags1">
+                <div class="addition_left">
+                    <h3 class="head">Draggable UI Elements:</h3>                    
+                    <div id="drag_yes" class="dragArray">Drag Me !!</div>
+                    <div id="drag_no" class="dragArray">I can only be dragged!</div>
+                    <div id="drag_yes" class="dragArray">Don't Leave Me!!</div>
+                    <div id="drag_no" class="dragArray">I dare you drag and drop me!</div>
+                </div> 
+                <div class="addition_right">
+                    <h3 class="head">Dropoff Zone:</h3>
+                    <div id="dropArray" class="dropBox"></div>
+                </div>
+            </div>
+            <hr class="row">
+            <div class="addition_drags2">
+                <div class="addition_left"><button id="call" onclick="call()" class="plus">Show me an array !!</button></div>
+                <div class="addition_right"><div class="dropBox"><ol id="arrayDisplay"></ol></div></div>
+            </div>
+			<hr class="row">
+			<div class="addition_cards">
+				<h3 class="head">It's all about Cards:</h3>
+				<div class="sliding_div" id="sd1">
+				<p align="center"><i class="fa fa-edge fa-5x"></i><br><br><br>
+				EDGE is the new web browser from Microsoft. It is fastand easy to use.
+				</p>
+				</div>
+				<div class="sliding_div" id="sd2">
+				<p align="center"><i class="fa fa-chrome fa-5x"></i><br><br><br>
+				CHROME, I just love this browser. Compared to Mozilla, it is faster.
+				</p>
+				</div>
+				<div class="sliding_div" id="sd3">
+				<p align="center"><i class="fa fa-firefox fa-5x"></i><br><br><br>
+				FIREFOX, the best browser around. Smooth Scrolling is a plus here.
+				</p>
+				</div>
+				<div class="sliding_div" id="sd4">
+				<p align="center"><i class="fa fa-opera fa-5x"></i><br><br><br>
+				OPERA, a browser I basically use for testing purposes. Stable and good.
+				</p>
+				</div>
+				<div class="sliding_div" id="sd5">
+				<p align="center"><i class="fa fa-safari fa-5x"></i><br><br><br>
+				SAFARI, a good Apple product, however lacks some integration.
+				</p>
+				</div>
+				<div class="exp_btn">
+				<p align="center"><button class="card_btn" id="c_btn1">Click to expand</button><button class="card_btn" id="c_btn2">Click to collapse</button></p>
+				</div>
+			</div>	
+			<hr class="row">
+			<div class="addition_sections">
+                <h3 class="head">Handy CSS3 Transition:</h3>
+				<div class="sections">
+				    <div class="section1"><img src="img1.jpg">
+                        <div class="section2">
+                        <p>A Jelly Bean-ish Chocolate delight to savour.</p>
+                        <button class="plus3">Just a button</button>
+                        </div>
+                    </div>		
+                </div>
+				<div class="sections">
+					<div class="section1"><img src="img2.jpg">
+                        <div class="section2">
+                        <p>Not a VooDoo Doll for sure. Just a toy!!</p>
+                        <p>
+                            <span id="fb"><a href="#"><i class="fa fa-facebook-square"></i></a></span>
+                            <span id="tw"><a href="#"><i class="fa fa-twitter-square"></i></a></span>
+                            <span id="ln"><a href="#"><i class="fa fa-linkedin-square"></i></a></span>
+                        </p>
+                        </div>
+                    </div>	
+				</div>
+				<div class="sections">
+					<div class="section1"><img src="img3.jpg">
+                        <div class="section2">
+                        <p>Cross Browser compatible effects. Magic of CSS!!</p>
+                        <p>
+                            <span class="icons"><i class="fa fa-edge"></i></a></span>
+                            <span class="icons"><i class="fa fa-firefox"></i></a></span>
+                            <span class="icons"><i class="fa fa-chrome"></i></a></span>
+                            <span class="icons"><i class="fa fa-safari"></i></a></span>
+                        </p>
+                        </div>
+                    </div>	
+				</div>
+				<div class="sections">
+					<div class="section1"><img src="img4.jpg">
+                        <div class="section2">
+                        <p>Simple. Elegant. Beautiful.</p>
+                        <p>
+                            <span class="icons"><i class="fa fa-html5"></i></a></span>
+                            <span class="icons"><i class="fa fa-css3"></i></a></span>
+                            <span class="icons"><i class="fa fa-code"></i></a></span>
+                        </p>
+                        </div>
+                    </div>	
+				</div>
+        	</div>
+            <hr class="row">
+            <div class="addition">
+                <h3 class="head">A slide-in menu:</h3>
+                <div class="addition_menu">
+                    <div class="menu">
+                        <div class="menu_body">
+                            <h2>Hi! I am Sunit</h2>
+                            <p class="pic"><img src="Angry%20Thor-512x512.png"></p>
+                            <p class="about">
+                                A Front End Developer by profession, interests in new technologies and developments. Don't misunderstand me by the angry Thor's image, I am by the way a very cool guy. I just love the Marvel comics characters, so I thought of putting Thor's image over there. This whole page and the subsequent pages are not made as a portfolio of mine, however, it can serve as one. This is made just to keep practising as well as sharing with you all what I have done. Also, to provide various tutorials/techniques to help you achieve what you have been trying to. I have integrated Javascript, jQuery and jQuery UI in this page and will be adding Angular JS to this. Except for 'Contact' link, all the other links on the left sliding menu are for demonstration purpose only.<br><br>
+                                Please feel free to provide me your valuable feedback. I need it !!<br>
+                                You can either click on the 'Contact' link on the left menu or email me at the email ID below:<br>
+                                <button id="emailing"><a href="mailto:sunitfed@yahoo.com" target="_top">sunitfed@yahoo.com</a></button>
+                                <p class="about">Well, this is not the end of the story, I will be continuing with this page very soon.        
+                                </p>
+                                <p id="feedback"><?php echo $feedback; ?></p>
+                            </p>
+                        </div>
+                        <div class="modal_container"></div>
+                        <div class="menu_body_cform">
+                            <form method="post" action="" class="cform">
+                                <h3 class="head">Contact Form:</h3>
+                                <ul class="add1">
+                                <li><input type="text" name="fname" class="num" autocomplete="off" placeholder="Please enter your first name" onfocus="this.placeholder=''" onblur="this.placeholder='Please enter your first name'" required></li>
+                                <li><input type="text" name="lname" class="num" autocomplete="off" placeholder="Please enter your last name" onfocus="this.placeholder=''" onblur="this.placeholder='Please enter your last name'" required></li><br>
+                                <li><input type="text" name="subject" class="num" autocomplete="off" placeholder="Your email subject goes here..." onfocus="this.placeholder=''" onblur="this.placeholder='Your email subject goes here...'" required></li>
+                                <li><input type="email" name="email" class="num" autocomplete="off" placeholder="Please enter your email address" onfocus="this.placeholder=''" onblur="this.placeholder='Please enter your email address'" required></li><br>                    
+                                <li><textarea class="num" name="message" autocomplete="off" placeholder="Your message goes here..." onfocus="this.placeholder=''" onblur="this.placeholder='Your message goes here...'" required></textarea></li><br>
+                                <li><div class="left_btn"><button type="submit" name="send" id="send" class="plus2">Send</button></div><div class="right_btn"><button type="reset" name="sum" id="close" class="plus2">Close</button></div></li>
+                                </ul>
+                            </form>
+                        </div>
+                        <ul class="slidingMenu" id="slide">
+                            <li><a>Home</a></li>
+                            <li><a>Profile</a></li>
+                            <li><a>Portfolio</a></li>
+                            <li><a>Services</a></li>
+                            <li><a id="cont">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="row">
+               
+        </div>
+        </div>
+    </body>
+</html>
